@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bangalore Home Price Predictor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #f1f2b5, #135058);
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            color: #fff;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            width: 400px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin: 15px 0 5px;
+            font-weight: bold;
+            color: #ffefc3;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 1em;
+        }
+
+        button {
+            padding: 12px 20px;
+            background-color: #f7b733;
+            border: none;
+            border-radius: 5px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #fc4a1a;
+            color: white;
+        }
+
+        .result {
+            margin-top: 25px;
+            font-size: 1.3em;
+            color: #f7f7f7;
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🏠 Bangalore Home Price Prediction</h1>
+
+    <form action="/predict" method="post">
+        <label for="location">Location:</label>
+        <select name="location" required>
+            {% for loc in locations %}
+            <option value="{{ loc }}">{{ loc.title() }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="sqft">Total Square Feet:</label>
+        <input type="text" name="sqft" required>
+
+        <label for="bhk">BHK:</label>
+        <input type="text" name="bhk" required>
+
+        <label for="bath">Bathrooms:</label>
+        <input type="text" name="bath" required>
+
+        <button type="submit">Predict Price</button>
+    </form>
+
+    {% if prediction_text %}
+    <div class="result">
+        {{ prediction_text }}
+    </div>
+    {% endif %}
+
+    
+    </footer>
+
+</body>
+</html>
