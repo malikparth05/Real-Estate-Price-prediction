@@ -40,5 +40,8 @@ def predict():
 
     return render_template('index.html', prediction_text=f"Estimated Price: ₹ {output} Lakhs", locations=data_columns[3:])
 
+import os
+
 if __name__ == "__main__":
-    app.run(debug=True, port=5006)
+    port = int(os.environ.get("PORT", 5006))
+    app.run(host='0.0.0.0', port=port)
