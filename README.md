@@ -13,6 +13,7 @@ This project is an end-to-end Data Science and Machine Learning application desi
 The application features a **modern, professional UI** that allows users to instantly calculate property values based on location, square footage, and BHK configuration.
 
 ### **[Explore the Live App](https://real-estate-price-prediction-rqhv.onrender.com)**
+<img width="1824" height="992" alt="image" src="https://github.com/user-attachments/assets/c2ee4936-225a-462c-b92a-1a4ead781801" />
 
 ---
 
