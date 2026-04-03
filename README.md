@@ -1,77 +1,89 @@
-#  Bengaluru House Price Predictor
+# 🏠 Bengaluru House Price Predictor
+**A professional Machine Learning valuation engine for the Bengaluru real estate market.**
 
-##  Overview
-This project is an end-to-end Machine Learning web application that predicts real estate prices in Bengaluru, India. 
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://real-estate-price-prediction-rqhv.onrender.com)
+[![Python 3.13](https://img.shields.io/badge/Python-3.13-blue.svg)](https://www.python.org/downloads/release/python-3130/)
+[![Flask](https://img.shields.io/badge/Framework-Flask-lightgrey.svg)](https://flask.palletsprojects.com/)
 
-The application allows users to enter the property's **location**, **total square footage**, **number of bathrooms**, and **BHK (Bedrooms, Hall, Kitchen)** to get an estimated price in Lakhs. The model was trained on a dataset of Bengaluru housing prices, processed to remove outliers, and deployed using a Flask server with a responsive HTML/CSS frontend.
+---
 
+## 📊 Overview
+This project is an end-to-end Data Science and Machine Learning application designed to provide institutional-grade property estimates. It utilizes a refined Linear Regression model trained on over **13,000 localized datapoints** from the Bengaluru housing market.
 
+The application features a **modern, professional UI** that allows users to instantly calculate property values based on location, square footage, and BHK configuration.
+
+### **[Explore the Live App](https://real-estate-price-prediction-rqhv.onrender.com)**
+
+---
+
+## ✨ Key Features
+*   **Precision Modeling:** removal of BHK, Price-per-Sqft, and Bathroom outliers for high accuracy (~84% R²).
+*   **Professional UI:** Minimalist, data-forward design with a "Market Insights" dashboard.
+*   **Smart Search:** Integrated location search with autocompletion for 240+ Bengaluru localities.
+*   **Cloud Ready:** Fully optimized for production deployment with Gunicorn and dynamic port handling.
+
+---
 
 ## 🛠️ Tech Stack
-* **Python**: Core programming language.
-* **Pandas & NumPy**: For data manipulation and cleaning.
-* **Matplotlib**: For data visualization and EDA.
-* **Scikit-Learn**: For building and tuning the machine learning model.
-* **Flask**: For the backend web server.
-* **HTML/CSS**: For the user interface.
+*   **Core Logic:** Python 3.13, Pandas, NumPy
+*   **Machine Learning:** Scikit-Learn (Linear Regression, GridSearchCV, K-Fold Cross Validation)
+*   **Backend:** Flask, Gunicorn (WSGI)
+*   **Frontend:** HTML5, CSS3 (Modern Minimalist Design), JavaScript (Vanilla)
 
-##  Project Workflow
+---
 
-### 1. Data Cleaning & EDA (Jupyter Notebook)
-The data processing was done in `real estate project.ipynb`:
-* **Data Cleaning:** Handled missing values and dropped unnecessary columns (`area_type`, `availability`, etc.).
-* **Feature Engineering:** * Converted `total_sqft` ranges (e.g., "1133 - 1384") into average numbers.
-    * Created a `bhk` column from the `size` feature.
-    * Dimensionality Reduction: Grouped locations with fewer than 10 data points into an "other" category to reduce the number of features (One Hot Encoding).
-* **Outlier Removal:** * Removed properties where `sqft` per bedroom was less than 300.
-    * Removed properties where the number of bathrooms exceeded `bhk + 2`.
-    * Removed price per sqft outliers using Mean and Standard Deviation.
+## 📂 Project Structure
+*   `apps.py`: Main Flask application with production server logic.
+*   `real estate project.ipynb`: Comprehensive Data Science pipeline (Cleaning, EDA, Outlier Removal).
+*   `templates/`: Contains the professional UI refactor (`index.html`).
+*   `banglore_home_prices_model.pickle`: Optimized serialized ML model.
+*   `columns.json`: Feature mapping for One-Hot Encoding.
+*   `requirements.txt`: System dependencies.
+*   `Procfile`: Deployment configuration for Render/Heroku.
 
-### 2. Model Building
-I used **GridSearchCV** to find the best model and parameters. I compared:
-* **Linear Regression** (Best Accuracy: ~84%)
-* Lasso Regression
-* Decision Tree Regressor
+---
 
-**Linear Regression** was selected as the final model.
+## 🚀 Data Science Workflow
+This project follows a rigorous data cleaning and modeling process:
+1.  **Data Cleaning:** Handling null values and normalizing complex strings (e.g., area ranges).
+2.  **Feature Engineering:** Dimensionality reduction for locations and synthesizing BHK attributes.
+3.  **Outlier Removal:** 
+    *   Business logic filters (e.g., 300 sqft/BHK minimum).
+    *   Statistical standard deviation filters for Price-per-Sqft.
+    *   Consistency checks (ensuring 3BHK prices align with 2BHK in the same area).
+4.  **Model Selection:** Evaluated Linear Regression, Lasso, and Decision Trees using `GridSearchCV`.
 
-### 3. Deployment
-* Exported the trained model to a pickle file (`banglore_home_prices_model.pickle`).
-* Exported column structure to `columns.json`.
-* Built a **Flask** server (`apps.py`) to handle HTTP requests.
-* Designed a clean frontend (`index.html`) where users select locations from a dropdown (populated dynamically) and get predictions.
+---
 
-##  How to Run
+## 💻 Local Setup
 
-1.  **Clone the repository:**
+1.  **Clone the Repository**
     ```bash
-    git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
-    cd your-repo-name
+    git clone https://github.com/malikparth05/Real-Estate-Price-prediction.git
+    cd Real-Estate-Price-prediction
     ```
 
-2.  **Install dependencies:**
-    Create a `requirements.txt` file (or install manually):
+2.  **Install Dependencies**
     ```bash
-    pip install flask pandas scikit-learn numpy matplotlib
+    pip install -r requirements.txt
     ```
 
-3.  **Run the application:**
+3.  **Launch the Server**
     ```bash
+    # Development mode
     python apps.py
+
+    # Production mode (Gunicorn)
+    gunicorn apps:app
     ```
 
-4.  **Open in Browser:**
-    The app runs on port 5006. Open your browser and go to:
-    `http://127.0.0.1:5006`
+4.  **Access the Dashboard**
+    Open `http://127.0.0.1:5006` in your browser.
 
-## 📂 Repository Structure
-* `apps.py`: Main Flask application file.
-* `templates/index.html`: The frontend user interface.
-* `real estate project.ipynb`: Notebook containing Data cleaning, EDA, and Model selection.
-* `banglore_home_prices_model.pickle`: The serialized Machine Learning model.
-* `columns.json`: List of columns used by the model (required for One Hot Encoding).
+---
 
-##  Future Improvements
-* Deploy the application to the cloud (AWS/Heroku/Render).
-* Add more features like "Carpet Area" or "Age of Property".
-* Improve the UI with a modern framework like React.
+## 🤝 Contributing
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/malikparth05/Real-Estate-Price-prediction/issues).
+
+---
+*Created with ❤️ by Malik Parth*
