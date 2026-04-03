@@ -1,4 +1,4 @@
-# 🏠 Bengaluru House Price Predictor
+#  Bengaluru House Price Predictor
 **A professional Machine Learning valuation engine for the Bengaluru real estate market.**
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://real-estate-price-prediction-rqhv.onrender.com)
@@ -7,7 +7,7 @@
 
 ---
 
-## 📊 Overview
+##  Overview
 This project is an end-to-end Data Science and Machine Learning application designed to provide institutional-grade property estimates. It utilizes a refined Linear Regression model trained on over **13,000 localized datapoints** from the Bengaluru housing market.
 
 The application features a **modern, professional UI** that allows users to instantly calculate property values based on location, square footage, and BHK configuration.
@@ -16,7 +16,7 @@ The application features a **modern, professional UI** that allows users to inst
 
 ---
 
-## ✨ Key Features
+##  Key Features
 *   **Precision Modeling:** removal of BHK, Price-per-Sqft, and Bathroom outliers for high accuracy (~84% R²).
 *   **Professional UI:** Minimalist, data-forward design with a "Market Insights" dashboard.
 *   **Smart Search:** Integrated location search with autocompletion for 240+ Bengaluru localities.
@@ -24,7 +24,7 @@ The application features a **modern, professional UI** that allows users to inst
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 *   **Core Logic:** Python 3.13, Pandas, NumPy
 *   **Machine Learning:** Scikit-Learn (Linear Regression, GridSearchCV, K-Fold Cross Validation)
 *   **Backend:** Flask, Gunicorn (WSGI)
@@ -32,7 +32,7 @@ The application features a **modern, professional UI** that allows users to inst
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 *   `apps.py`: Main Flask application with production server logic.
 *   `real estate project.ipynb`: Comprehensive Data Science pipeline (Cleaning, EDA, Outlier Removal).
 *   `templates/`: Contains the professional UI refactor (`index.html`).
@@ -43,7 +43,7 @@ The application features a **modern, professional UI** that allows users to inst
 
 ---
 
-## 🚀 Data Science Workflow
+##  Data Science Workflow
 This project follows a rigorous data cleaning and modeling process:
 1.  **Data Cleaning:** Handling null values and normalizing complex strings (e.g., area ranges).
 2.  **Feature Engineering:** Dimensionality reduction for locations and synthesizing BHK attributes.
@@ -55,7 +55,7 @@ This project follows a rigorous data cleaning and modeling process:
 
 ---
 
-## 💻 Local Setup
+##  Local Setup
 
 1.  **Clone the Repository**
     ```bash
@@ -82,8 +82,8 @@ This project follows a rigorous data cleaning and modeling process:
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/malikparth05/Real-Estate-Price-prediction/issues).
 
 ---
-*Created with ❤️ by Malik Parth*
+*Created by Parth Malik*
